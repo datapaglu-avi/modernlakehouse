@@ -1,0 +1,122 @@
+# ================================
+# General
+# ================================
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+*.swo
+*.pid
+
+# ================================
+# Python
+# ================================
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.env
+.venv
+venv/
+ENV/
+env/
+pip-wheel-metadata/
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# ================================
+# Airflow
+# ================================
+airflow.db
+airflow-webserver.pid
+airflow-scheduler.pid
+logs/
+unittests.cfg
+
+# ================================
+# SQLMesh
+# ================================
+.sqlmesh/
+.sqlmesh_cache/
+sqlmesh.db
+
+# ================================
+# DLT
+# ================================
+.dlt/
+.dlt_state/
+
+# ================================
+# Node / Evidence BI
+# ================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.next/
+out/
+dist/
+
+# ================================
+# Docker
+# ================================
+*.env
+.env.*
+docker-compose.override.yml
+docker-data/
+*.tar
+
+# ================================
+# MinIO / Local storage mounts
+# ================================
+minio_data/
+data/
+storage/
+*.parquet
+*.iceberg
+*.orc
+
+# ================================
+# IDEs and Editors
+# ================================
+.vscode/
+.idea/
+*.iml
+
+# ================================
+# Mac / Linux noise
+# ================================
+.AppleDouble
+.LSOverride
+Icon?
+._*
+
+# ================================
+# Testing / Coverage
+# ================================
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ================================
+# Optional future AI artifacts
+# ================================
+ai/vector_store/
+ai/embeddings/cache/
+*.faiss
+*.index
+
+# ================================
+# Secrets (IMPORTANT)
+# ================================
+secrets/
+*.key
+*.pem
+*.crt
