@@ -65,6 +65,7 @@ dist/
 # Docker
 # ================================
 *.env
+!sample.env
 .env.*
 docker-compose.override.yml
 docker-data/

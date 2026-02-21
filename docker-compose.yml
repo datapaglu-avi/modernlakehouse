@@ -1,0 +1,36 @@
+services:
+  s3-minio:
+    container_name: mlh-s3-minio
+    build:
+      context: ./docker/minio
+      dockerfile: Dockerfile
+    platform: linux/arm64
+    ports:
+      - 9000:9000 #API
+      - 9001:9001 # WebUI
+    env_file:
+      - .env
+    networks:
+      - mlh-network
+    restart:
+      unless-stopped
+    volumes:
+      - minio-data:/data
+    healthcheck:
+      test: >
+        /bin/sh -c "
+        mc alias set hc http://localhost:9000 $MINIO_ROOT_USER $MINIO_ROOT_PASSWORD &&
+        mc ready hc &&
+        mc alias rm hc
+        "
+      interval: 15s
+      timeout: 10s
+      retries: 2
+      start_period: 20s
+
+networks:
+  mlh-network:
+    driver: bridge
+
+volumes:
+  minio-data:
