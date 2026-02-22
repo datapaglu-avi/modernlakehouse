@@ -28,6 +28,31 @@ services:
       retries: 2
       start_period: 20s
 
+
+  dlt:
+    # container_name: mlh-dlt # Not fixing name here, as Airflow will spawn multiple containers of it.
+    build:
+      context: ./docker/dlt
+      dockerfile: Dockerfile
+    platform: linux/arm64
+    networks:
+      - mlh-network
+    env_file:
+      - .env
+    restart: 
+      "no"
+    volumes:
+      - ./dlt:/usr/src/app/
+    depends_on:
+      - s3-minio
+    healthcheck:
+      test: ["CMD", "python", "-c", "import dlt"]
+      interval: 10s
+      timeout: 5s
+      retries: 2
+      start_period: 10s
+    command: ["python", "test-pipeline.py"]
+
 networks:
   mlh-network:
     driver: bridge
